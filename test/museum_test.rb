@@ -148,7 +148,7 @@ class MuseumTest < Minitest::Test
     contestants = dmns.ticket_lottery_contestants(dead_sea_scrolls)
 
     assert_equal true, contestants.include?(dmns.draw_lottery_winner(dead_sea_scrolls))
-    assert_equal patron_1, dmns.draw_lottery_winner(gems_and_minerals)
+    assert_nil dmns.draw_lottery_winner(gems_and_minerals)
   end
 
 end
