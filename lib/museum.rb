@@ -23,8 +23,12 @@ class Museum
     @exhibits.reduce({}) do |acc, exhibit|
       acc[exhibit] = @patrons.select {|patron| patron.interests.include?(exhibit.name)}
       acc
-      
+
     end
+  end
+
+  def ticket_lottery_contestants(exhibit)
+    @patrons.select { |patron| patron.interests.include?(exhibit.name) && patron.spending_money < exhibit.cost }
   end
 
 end
