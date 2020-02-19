@@ -26,4 +26,16 @@ class PatronTest < Minitest::Test
     assert_equal ["Dead Sea Scrolls", "Gems and Minerals"], patron_1.interests
   end
 
+  def test_knows_if_it_is_interested_in_exhibit
+    patron_1 = Patron.new("Bob", 20)
+
+    assert_equal false, patron_1.interested?("IMAX")
+    assert_equal false, patron_1.interested?("Dead Sea Scrolls")
+
+    patron_1.add_interest("Dead Sea Scrolls")
+
+    assert_equal false, patron_1.interested?("IMAX")
+    assert_equal true, patron_1.interested?("Dead Sea Scrolls")  
+  end
+
 end
