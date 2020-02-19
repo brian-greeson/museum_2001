@@ -11,7 +11,7 @@ class Museum
   end
 
   def recommend_exhibits(patron)
-    recommend = @exhibits.select { |exhibit| patron.interests.include?(exhibit.name)}
+    recommend = @exhibits.select { |exhibit| patron.interested?(exhibit)}
     recommend.sort_by {|exhibit| exhibit.name}
   end
 
@@ -21,14 +21,14 @@ class Museum
 
   def patrons_by_exhibit_interest
     @exhibits.reduce({}) do |acc, exhibit|
-      acc[exhibit] = @patrons.select {|patron| patron.interests.include?(exhibit.name)}
+      acc[exhibit] = @patrons.select {|patron| patron.interested?(exhibit)}
       acc
 
     end
   end
 
   def ticket_lottery_contestants(exhibit)
-    @patrons.select { |patron| patron.interests.include?(exhibit.name) && patron.spending_money < exhibit.cost }
+    @patrons.select { |patron| patron.interested?(exhibit) && patron.spending_money < exhibit.cost }
   end
 
 end
