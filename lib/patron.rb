@@ -10,4 +10,9 @@ class Patron
     @interests << interest
   end
 
+  def interested?(exhibit)
+    @interests.include?(exhibit.name)
+  end
+
+
 end
