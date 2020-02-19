@@ -39,6 +39,12 @@ class PatronTest < Minitest::Test
 
     assert_equal false, patron_1.interested?(imax)
     assert_equal true, patron_1.interested?(dead_sea_scrolls)
+
+    patron_1.add_interest("IMAX")
+
+    assert_equal true, patron_1.interested?(imax)
+    assert_equal true, patron_1.interested?(dead_sea_scrolls)
+
   end
 
 end
