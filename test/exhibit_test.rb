@@ -7,7 +7,7 @@ require "./lib/exhibit"
 class ExhibitTest < Minitest::Test
 
   def test_it_exists
-    assert_instance_of Exhibit, Exhibit.new()
+    assert_instance_of Exhibit, Exhibit.new({name: "Gems and Minerals", cost: 0})
   end
 
 end
@@ -16,9 +16,7 @@ end
 #
 # pry(main)> require './lib/patron'
 # # => true
-#
-# pry(main)> exhibit = Exhibit.new({name: "Gems and Minerals", cost: 0})
-# # => #<Exhibit:0x00007fcb13bd22d0...>
+
 #
 # pry(main)> exhibit.name
 # # => "Gems and Minerals"
