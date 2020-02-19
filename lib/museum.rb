@@ -15,4 +15,8 @@ class Museum
     recommend.sort_by {|exhibit| exhibit.name}
   end
 
+  def admit(patron)
+    @patrons << patron
+  end
+
 end
