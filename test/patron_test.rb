@@ -9,6 +9,13 @@ class PatronTest < Minitest::Test
     assert_instance_of Patron, Patron.new("Bob", 20)
   end
 
+  def test_it_has_attributes
+    patron_1 = Patron.new("Bob", 20)
+    assert_equal "Bob", patron_1.name
+    assert_equal 20, patron_1.spending_money
+    assert_equal [], patron_1.interests
+  end
+
 end
 # pry(main)> require './lib/exhibit'
 # # => true
