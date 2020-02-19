@@ -9,4 +9,9 @@ class Museum
     @exhibits << exhibit
   end
 
+  def recommend_exhibits(patron)
+    recommend = @exhibits.select { |exhibit| patron.interests.include?(exhibit.name)}
+    recommend.sort_by {|exhibit| exhibit.name}
+  end
+
 end
