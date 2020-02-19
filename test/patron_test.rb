@@ -2,6 +2,7 @@ require "pry"
 require "minitest/autorun"
 require "mocha/minitest"
 require "./lib/patron"
+require "./lib/exhibit"
 
 class PatronTest < Minitest::Test
 
@@ -28,14 +29,16 @@ class PatronTest < Minitest::Test
 
   def test_knows_if_it_is_interested_in_exhibit
     patron_1 = Patron.new("Bob", 20)
+    dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+    imax = Exhibit.new({name: "IMAX",cost: 15})
 
-    assert_equal false, patron_1.interested?("IMAX")
-    assert_equal false, patron_1.interested?("Dead Sea Scrolls")
+    assert_equal false, patron_1.interested?(imax)
+    assert_equal false, patron_1.interested?(dead_sea_scrolls)
 
     patron_1.add_interest("Dead Sea Scrolls")
 
-    assert_equal false, patron_1.interested?("IMAX")
-    assert_equal true, patron_1.interested?("Dead Sea Scrolls")  
+    assert_equal false, patron_1.interested?(imax)
+    assert_equal true, patron_1.interested?(dead_sea_scrolls)
   end
 
 end
